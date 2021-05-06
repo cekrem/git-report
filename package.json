@@ -1,0 +1,15 @@
+{
+  "name": "git-report",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "execute": "index.js"
+  },
+  "main": "index.js",
+  "author": "cekrem",
+  "license": "ISC",
+  "scripts": {},
+  "dependencies": {
+    "ramda": "^0.27.1"
+  }
+}
