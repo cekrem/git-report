@@ -39,6 +39,16 @@ const mapLine = compose(
 
 const mapLines = (lines) => lines.map(mapLine);
 
+const reduceLines = (dir) =>
+  reduce(
+    ([, totalAdded, totalDeleted], [added, deleted]) => [
+      dir,
+      added + (totalAdded || 0),
+      deleted + (totalDeleted || 0),
+    ],
+    []
+  );
+
 const execPromise = (ps, dir = "./") =>
   new Promise((resolve) => {
     exec(ps, { cwd: dir }, (error, stdout) => {
@@ -54,17 +64,7 @@ const gitStatsInDir = (dir, author) =>
   )
     .then(mapOutputToLines)
     .then(mapLines)
-    .then((lines) => {
-      // TODO: use reducer from R
-      return lines.reduce(
-        ([, totalAdded, totalDeleted], [added, deleted]) => [
-          dir,
-          added + (totalAdded || 0),
-          deleted + (totalDeleted || 0),
-        ],
-        []
-      );
-    })
+    .then(reduceLines(dir))
     .then((entries) => (entries.length ? entries : [dir, 0, 0]))
     .catch(console.error);
 
