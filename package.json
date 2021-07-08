@@ -1,6 +1,6 @@
 {
   "name": "pretty-git-report",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "bin": {
     "pretty-git-report": "index.js"
