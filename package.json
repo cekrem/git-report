@@ -1,5 +1,5 @@
 {
-  "name": "git-report",
+  "name": "pretty-git-report",
   "version": "1.0.0",
   "description": "",
   "bin": {
